@@ -88,10 +88,45 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+//Call getpassword function 
+getPasswordOptions ()
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+let confirmLength = (prompt("How many characters would you like your password to contain?"));
+if (confirmLength <= 9 || confirmLength >= 64) {
+  alert("Password length must be between 10-64 characters, please try again");
 }
+let confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
+let confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");    
+let confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
+let confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
+if(confirmUpperCase === false && confirmLowerCase === false && confirmSpecialCharacter === false && confirmNumericCharacter === false) {
+  alert("Please choose at least one character type")}
+}
+
+let characterOptionsArray = []
+
+if (special) {
+  characterOptionsArray+specialCharacters.concat();
+  console.log(optionsArray)
+}
+else if (lower) {
+  characterOptionsArray+lowerCaseCharacters.concat();
+  console.log(optionsArray)
+}
+else if (upper) {
+  characterOptionsArray+upperCaseCharacters.concat();
+  console.log(optionsArray)
+}
+else if (nums) {
+  characterOptionsArray+numericCharacters.concat();
+  console.log(optionsArray)
+}
+else {
+  alert("You must have at least 1 type")
+}
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
