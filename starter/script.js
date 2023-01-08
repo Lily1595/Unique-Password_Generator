@@ -109,19 +109,19 @@ if(confirmUpperCase === false && confirmLowerCase === false && confirmSpecialCha
 
 let characterOptionsArray = []
 
-if (getPasswordOptions.confirmSpecialCharacter) {
+if (getPasswordOptions.confirmSpecialCharacter = confirm) {
   characterOptionsArray+getPasswordOptions.confirmSpecialCharacter.concat();
   console.log(characteroptionsArray)
 }
-else if (getPasswordOptions.confirmNumericCharacter) {
+else if (getPasswordOptions.confirmNumericCharacter = confirm) {
   characterOptionsArray+getPasswordOptions.confirmNumericCharacter.concat();
   console.log(characteroptionsArray)
 }
-else if (getPasswordOptions.confirmLowerCase) {
+else if (getPasswordOptions.confirmLowerCase = confirm) {
   characterOptionsArray+getPasswordOptions.confirmLowerCase.concat();
   console.log(characteroptionsArray)
 }
-else if (getPasswordOptions.confirmUpperCase) {
+else if (getPasswordOptions.confirmUpperCase = confirm) {
   characterOptionsArray+getPasswordOptions.confirmUpperCase.concat();
   console.log(characteroptionsArray)
 }
@@ -131,8 +131,9 @@ else {
 
 
 // Function for getting a random element from an array
-function getRandom(arr) {
 
+function getRandom(arr) {
+  return Math.floor(Math.random() * arr.length);
 }
 
 // Function to generate password with user input
