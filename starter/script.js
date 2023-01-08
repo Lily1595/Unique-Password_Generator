@@ -1,5 +1,5 @@
 // Array of special characters to be included in password
-var specialCharacters = [
+let specialCharacters = [
   '@',
   '%',
   '+',
@@ -26,10 +26,10 @@ var specialCharacters = [
 ];
 
 // Array of numeric characters to be included in password
-var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+let numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 // Array of lowercase characters to be included in password
-var lowerCasedCharacters = [
+let lowerCasedCharacters = [
   'a',
   'b',
   'c',
@@ -59,7 +59,7 @@ var lowerCasedCharacters = [
 ];
 
 // Array of uppercase characters to be included in password
-var upperCasedCharacters = [
+let upperCasedCharacters = [
   'A',
   'B',
   'C',
@@ -89,73 +89,72 @@ var upperCasedCharacters = [
 ];
 
 //Call getpassword function 
-getPasswordOptions ()
+getPasswordOptions()
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-let confirmLength = (prompt("How many characters would you like your password to contain?"));
-while (confirmLength <= 9 || confirmLength >= 64) {
-  alert("Password length must be between 10-64 characters, please try again");
-  confirmLength = (prompt("How many characters would you like your password to contain?"));
-}
-alert("Thank you. Your password length will be " + confirmLength + " characters"); 
+  let confirmLength = (prompt("How many characters would you like your password to contain?"));
+  while (confirmLength <= 9 || confirmLength >= 64) {
+    alert("Password length must be between 10-64 characters, please try again");
+    confirmLength = (prompt("How many characters would you like your password to contain?"));
+  }
+  alert("Thank you. Your password length will be " + confirmLength + " characters");
 
-let confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
-let confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");    
-let confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
-let confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
-
-while(confirmUpperCase === false && confirmLowerCase === false && confirmSpecialCharacter === false && confirmNumericCharacter === false) {
-  alert("Please choose at least one character type")
   let confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
-  let confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");    
+  let confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");
   let confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
   let confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
+
+  while (confirmUpperCase === false && confirmLowerCase === false && confirmSpecialCharacter === false && confirmNumericCharacter === false) {
+    alert("Please choose at least one character type")
+    let confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
+    let confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");
+    let confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
+    let confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
+  }
 }
-  
-}
 
-//find a way to loop back through the options if they haven't chosen any character types 
+//something wrong with this bit above if you do it 2 times 
 
 
-// Function for getting a random element from an array
-
-function getRandom(arr) {
-  return Math.floor(Math.random() * arr.length);
+//Getting a random element from an array
+for (let i = 0; i < confirmLength; i++) {
+  let randomNumber = Math.floor(Math.random() * characterOptionsArray.length);
+  console.log(randomNumber);
 }
 
 // Function to generate password with user input
 function generatePassword() {
   let characterOptionsArray = []
 
-if (getPasswordOptions.confirmSpecialCharacter = confirm) {
-  characterOptionsArray+getPasswordOptions.confirmSpecialCharacter.concat();
-  console.log(characteroptionsArray)
-}
-else if (getPasswordOptions.confirmNumericCharacter = confirm) {
-  characterOptionsArray+getPasswordOptions.confirmNumericCharacter.concat();
-  console.log(characteroptionsArray)
-}
-else if (getPasswordOptions.confirmLowerCase = confirm) {
-  characterOptionsArray+getPasswordOptions.confirmLowerCase.concat();
-  console.log(characteroptionsArray)
-}
-else if (getPasswordOptions.confirmUpperCase = confirm) {
-  characterOptionsArray+getPasswordOptions.confirmUpperCase.concat();
-  console.log(characteroptionsArray)
-}
-else {
-  alert("You must have at least 1 type")
-}
+  if (getPasswordOptions.confirmSpecialCharacter === true) {
+    characterOptionsArray = characterOptionsArray.concat(specialCharacters);
+    console.log(characterOptionsArray)
+  }
+  else if (getPasswordOptions.confirmNumericCharacter === true) {
+    characterOptionsArray = characterOptionsArray.concat(numericCharacters);
+    console.log(characterOptionsArray)
+  }
+  else if (getPasswordOptions.confirmLowerCase === true) {
+    characterOptionsArray = characterOptionsArray.concat(lowerCasedCharacters);
+    console.log(characterOptionsArray)
+  }
+  else if (getPasswordOptions.confirmUpperCase === true) {
+    characterOptionsArray = characterOptionsArray.concat(upperCasedCharacters);
+    console.log(characterOptionsArray)
+  }
+  else {
+    alert("You must have at least 1 type")
+  }
 }
 
 // Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
+let generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+  let password = generatePassword();
+  let passwordText = document.querySelector('#password');
 
   passwordText.value = password;
 }
