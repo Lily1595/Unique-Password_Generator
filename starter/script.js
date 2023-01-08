@@ -105,23 +105,25 @@ if(confirmUpperCase === false && confirmLowerCase === false && confirmSpecialCha
   alert("Please choose at least one character type")}
 }
 
+// Store choices in new array 
+
 let characterOptionsArray = []
 
-if (special) {
-  characterOptionsArray+specialCharacters.concat();
-  console.log(optionsArray)
+if (getPasswordOptions.confirmSpecialCharacter) {
+  characterOptionsArray+getPasswordOptions.confirmSpecialCharacter.concat();
+  console.log(characteroptionsArray)
 }
-else if (lower) {
-  characterOptionsArray+lowerCaseCharacters.concat();
-  console.log(optionsArray)
+else if (getPasswordOptions.confirmNumericCharacter) {
+  characterOptionsArray+getPasswordOptions.confirmNumericCharacter.concat();
+  console.log(characteroptionsArray)
 }
-else if (upper) {
-  characterOptionsArray+upperCaseCharacters.concat();
-  console.log(optionsArray)
+else if (getPasswordOptions.confirmLowerCase) {
+  characterOptionsArray+getPasswordOptions.confirmLowerCase.concat();
+  console.log(characteroptionsArray)
 }
-else if (nums) {
-  characterOptionsArray+numericCharacters.concat();
-  console.log(optionsArray)
+else if (getPasswordOptions.confirmUpperCase) {
+  characterOptionsArray+getPasswordOptions.confirmUpperCase.concat();
+  console.log(characteroptionsArray)
 }
 else {
   alert("You must have at least 1 type")
