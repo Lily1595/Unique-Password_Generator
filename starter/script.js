@@ -88,65 +88,83 @@ let upperCasedCharacters = [
   'Z'
 ];
 
-//Call getpassword function 
-getPasswordOptions()
+//Variables to  store user character type choices
+let confirmSpecialCharacter, confirmNumericCharacter, confirmLowerCase, confirmUpperCase;
 
-// Function to prompt user for password options
+// 1. Function prompt user for password options 
+
 function getPasswordOptions() {
-  let confirmLength = (prompt("How many characters would you like your password to contain?"));
-  while (confirmLength <= 9 || confirmLength >= 64) {
-    alert("Password length must be between 10-64 characters, please try again");
-    confirmLength = (prompt("How many characters would you like your password to contain?"));
-  }
-  alert("Thank you. Your password length will be " + confirmLength + " characters");
-
   let confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
+  console.log (confirmSpecialCharacter);
   let confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");
+  console.log (confirmNumericCharacter);
   let confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
+  console.log (confirmLowerCase);
   let confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
-
-  while (confirmUpperCase === false && confirmLowerCase === false && confirmSpecialCharacter === false && confirmNumericCharacter === false) {
-    alert("Please choose at least one character type")
-    let confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
-    let confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");
-    let confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
-    let confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
+  console.log (confirmUpperCase);
   }
-}
+  getPasswordOptions();
 
-//something wrong with this bit above if you do it 2 times 
+  while ((confirmSpecialCharacter == false) && (confirmNumericCharacter == false) && (confirmLowerCase == false) && (confirmUpperCase == false)) {
+    alert("Please select at least one character option!");
+  }
 
+// 2. Function to create list of possible characters from user's character options input.
 
-//Getting a random element from an array
-for (let i = 0; i < confirmLength; i++) {
-  let randomNumber = Math.floor(Math.random() * characterOptionsArray.length);
-  console.log(randomNumber);
-}
-
-// Function to generate password with user input
-function generatePassword() {
-  let characterOptionsArray = []
+function listOfCharacters() {
+  let characterOptionsArray = [];
 
   if (getPasswordOptions.confirmSpecialCharacter === true) {
     characterOptionsArray = characterOptionsArray.concat(specialCharacters);
-    console.log(characterOptionsArray)
+    console.log(characterOptionsArray);
   }
-  else if (getPasswordOptions.confirmNumericCharacter === true) {
+  if (getPasswordOptions.confirmNumericCharacter === true) {
     characterOptionsArray = characterOptionsArray.concat(numericCharacters);
-    console.log(characterOptionsArray)
+    console.log(characterOptionsArray);
   }
-  else if (getPasswordOptions.confirmLowerCase === true) {
+  if (getPasswordOptions.confirmLowerCase === true) {
     characterOptionsArray = characterOptionsArray.concat(lowerCasedCharacters);
-    console.log(characterOptionsArray)
+    console.log(characterOptionsArray);
   }
-  else if (getPasswordOptions.confirmUpperCase === true) {
+  if (getPasswordOptions.confirmUpperCase === true) {
     characterOptionsArray = characterOptionsArray.concat(upperCasedCharacters);
-    console.log(characterOptionsArray)
-  }
-  else {
-    alert("You must have at least 1 type")
+    console.log(characterOptionsArray);
   }
 }
+
+// 3. Function to choose length of password
+
+function getPasswordLength() {
+  let confirmLength = (prompt("How many characters would you like your password to contain? Please choose between 10 and 64!"));
+  console.log(confirmLength);
+  alert("Thank you. Your password length will be " + confirmLength + " characters");
+}
+
+// While Loop is user leaves field blank 
+while (confirmLength == null) {
+  alert("You can't leave the field blank! Please put in a number");
+  confirmLength = prompt("Please input a number between 10 and 64!");
+}
+
+//If user does enter a value, run a while loop until the value entered meets acceptance criteria 
+if (confirmLength !== null) {
+  while (isNaN(confirmLength) || confirmLength === "" || confirmLength < 10 || confirmLength > 64) {
+    confirmLength = prompt("Please input a number between 10 and 64!");
+  }
+}
+
+ 
+
+// 4. Function to generate a random selection of characters from new array, equal to the chosen password length 
+
+function randomArray(){
+  let randomNumbers = [];
+for (let i = 0; i < getPasswordLength.confirmLength; i++) {
+  let randomNumber = Math.floor(Math.random() * characterOptionsArray.length);
+  randomNumbers.push(randomNumber);
+}
+}
+
 
 // Get references to the #generate element
 let generateBtn = document.querySelector('#generate');
