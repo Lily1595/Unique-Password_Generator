@@ -135,49 +135,37 @@ if (confirmLength !== null) {
   }
 }
 
-//Function for getting a random element from an array
-function getRandom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
 //Function to convert the password length input into a number 
 function convertToNumber() {
   let passwordLength = Number(confirmLength);
 }
 
+//Function for getting a random element from an array
+function getRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
+//Function for storing random characters in userPassArr variable based on user choices
+function constructPassword() {
 
-
-
-
-
-
-
-
-
-
-/* 3. Function to create list of possible characters from user's character options input.
-
-function listOfCharacters() {
-  let characterOptionsArray = [];
-
-  if (getPasswordOptions.confirmSpecialCharacter === true) {
-    characterOptionsArray = characterOptionsArray.concat(specialCharacters);
-    console.log(characterOptionsArray);
+  if (confirmLowerCase == true) {
+    userPassArr += getRandom(lowerCasedCharacters);
   }
-  if (getPasswordOptions.confirmNumericCharacter === true) {
-    characterOptionsArray = characterOptionsArray.concat(numericCharacters);
-    console.log(characterOptionsArray);
+  if (confirmUpperCase == true) {
+    userPassArr += getRandom(upperCasedCharacters);
   }
-  if (getPasswordOptions.confirmLowerCase === true) {
-    characterOptionsArray = characterOptionsArray.concat(lowerCasedCharacters);
-    console.log(characterOptionsArray);
+  if (confirmNumericCharacter == true) {
+    userPassArr += getRandom(numericCharacters);
   }
-  if (getPasswordOptions.confirmUpperCase === true) {
-    characterOptionsArray = characterOptionsArray.concat(upperCasedCharacters);
-    console.log(characterOptionsArray);
+  if (confirmSpecialCharacter == true) {
+    userPassArr += getRandom(specialCharacters);
   }
 }
+
+
+
+
+
 
 
 // 4. Function to generate a random selection of characters from new array, equal to the chosen password length 
@@ -189,7 +177,7 @@ for (let i = 0; i < getPasswordLength.confirmLength; i++) {
   randomNumbers.push(randomNumber);
 }
 }
-*/
+
 
 // Get references to the #generate element
 let generateBtn = document.querySelector('#generate');
