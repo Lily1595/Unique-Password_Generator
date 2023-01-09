@@ -131,7 +131,8 @@ function characterOptions() {
 };
 
 /*FUNCTION TO STORE PASSWORD OPTIONS 
-- 
+- create an object which stores the number of characters and the characters chosen by the user 
+- console.log to check they are correct 
 */
 function storeUserOptions() {
   userOptions = {
@@ -142,25 +143,26 @@ function storeUserOptions() {
   console.log(userOptions.userCharacters)
 }
 
-
 //FUNCTION FOR GETTING RANDOM ELEMENT FROM ARRAY
 function getRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-//USE THE GET RANDOM FUNCTION 
-let randomSpecial = getRandom(specialCharacters);
-let randomNumeric = getRandom(numericCharacters);
-let randomLowerCase = getRandom(lowerCasedCharacters);
-let randomUpperCase = getRandom(upperCasedCharacters);
-
-//FUNCTION TO GENERATE PASSWORD 
+/*FUNCTION TO GENERATE PASSWORD 
+- create a function which will generate the password when called 
+- call storeUserOptions 
+- save time by creating new variable equal to the user characters and length selected 
+- create a new empty array which will be where all the users chosen characters are stored 
+- the loop will run according to the length of password that the user input 
+- whichever boolean questions the user clicked 'OK' to, the corresponding RANDOMISED array will be pushed to the new array 'charArray'
+*/
 function generatePassword() {
   storeUserOptions()
   let userChar = userOptions.userCharacters;
+  let userLength = userOptions.numOfChar;
   let charArray = [];
 
-  for (let i = 0; i <userOptions.numOfChar; i++) {
+  for (let i = 0; i < userLength; i++) {
     if(userChar.confirmLowerCase){
       charArray.push(getRandom(lowerCasedCharacters))
     }if(userChar.confirmUppercase){
@@ -171,7 +173,10 @@ function generatePassword() {
       charArray.push(getRandom(specialCharacters))
     }
   }
+  console.log(charArray);
 }
+//DEBUG - why does this return a ray of twice the number i want? 
+//DEBUG - and why does the value still come up as undefined? 
 
 // Get references to the #generate element
 let generateBtn = document.querySelector('#generate');
