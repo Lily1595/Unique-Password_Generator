@@ -88,52 +88,53 @@ let upperCasedCharacters = [
   'Z'
 ];
 
-//Variables to  store user character type choices
-let confirmSpecialCharacter, confirmNumericCharacter, confirmLowerCase, confirmUpperCase;
+// Global Variables 
+let passwordLength;
+let confirmLength;
+let confirmLowerCase;
+let confirmUpperCase;
+let confirmNumericCharacter;
+let confirmSpecialCharacter;
+let userPassArr = [];
+let randomArraySelection;
 
-//A variable to store the concatenated array data for password based on user choice
-let userPassArr = "";
-
-// 1. Function prompt user for password options 
+// Function prompt user for password options 
 
 function getPasswordOptions() {
   let confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
-  console.log (confirmSpecialCharacter);
   let confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");
-  console.log (confirmNumericCharacter);
   let confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
-  console.log (confirmLowerCase);
   let confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
-  console.log (confirmUpperCase);
-  }
+if ((confirmSpecialCharacter === false) && (confirmNumericCharacter === false) && (confirmLowerCase === false) && (confirmUpperCase === false)) {
+  alert("Please select at least one character option!");
   getPasswordOptions();
+  return;
+}}
+getPasswordOptions();
 
-  while ((confirmSpecialCharacter == false) && (confirmNumericCharacter == false) && (confirmLowerCase == false) && (confirmUpperCase == false)) {
-    alert("Please select at least one character option!");
-  }
-  getPasswordOptions()
-
-
-// 2. Function to choose length of password
+// Function to choose length of password
 
 function getPasswordLength() {
-  let confirmLength = (prompt("How many characters would you like your password to contain? Please choose between 10 and 64!"));
-  console.log(confirmLength);
-  alert("Thank you. Your password length will be " + confirmLength + " characters");
-}
+  let confirmLength = prompt("How many characters would you like your password to contain? Please choose between 10 and 64!");
+  if (isNaN(confirmLength) || confirmLength < 10 || confirmLength > 64) {
+    alert("Please choose between 10 and 64");
+    getPasswordLength();
+    return;
+}}
+getPasswordLength();
 
-// While Loop is user leaves field blank 
+/* While Loop is user leaves field blank 
 while (confirmLength == null) {
   alert("You can't leave the field blank! Please put in a number");
-  confirmLength = prompt("Please input a number between 10 and 64!");
-}
+  getPasswordLength()
+}*/
 
-//If user does enter a value, run a while loop until the value entered meets acceptance criteria 
+/* If user does enter a value, run a while loop until the value entered meets acceptance criteria 
 if (confirmLength !== null) {
-  while (isNaN(confirmLength) || confirmLength === "" || confirmLength < 10 || confirmLength > 64) {
-    confirmLength = prompt("Please input a number between 10 and 64!");
+  while (isNaN(confirmLength) || confirmLength < 10 || confirmLength > 64) {
+    getPasswordLength();
   }
-}
+} */
 
 //Function to convert the password length input into a number 
 function convertToNumber() {
@@ -161,23 +162,13 @@ function constructPassword() {
     userPassArr += getRandom(specialCharacters);
   }
 }
-
-
-
-
-
-
-
-// 4. Function to generate a random selection of characters from new array, equal to the chosen password length 
-
-function randomArray(){
-  let randomNumbers = [];
-for (let i = 0; i < getPasswordLength.confirmLength; i++) {
-  let randomNumber = Math.floor(Math.random() * characterOptionsArray.length);
-  randomNumbers.push(randomNumber);
+//Function to make sure the password is the appropriate length based on user input 
+function generatePassword() {
+  while (userPassArr.length < passwordLength) {
+    constructPassword();
+  }
 }
-}
-
+generatePassword();
 
 // Get references to the #generate element
 let generateBtn = document.querySelector('#generate');
