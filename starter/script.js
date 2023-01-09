@@ -135,7 +135,28 @@ if (confirmLength !== null) {
   }
 }
 
-// 3. Function to create list of possible characters from user's character options input.
+//Function for getting a random element from an array
+function getRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+//Function to convert the password length input into a number 
+function convertToNumber() {
+  let passwordLength = Number(confirmLength);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 3. Function to create list of possible characters from user's character options input.
 
 function listOfCharacters() {
   let characterOptionsArray = [];
@@ -168,7 +189,7 @@ for (let i = 0; i < getPasswordLength.confirmLength; i++) {
   randomNumbers.push(randomNumber);
 }
 }
-
+*/
 
 // Get references to the #generate element
 let generateBtn = document.querySelector('#generate');
