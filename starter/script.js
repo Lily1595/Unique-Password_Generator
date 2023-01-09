@@ -88,15 +88,8 @@ let upperCasedCharacters = [
   'Z'
 ];
 
-// Global Variables 
-let passwordLength;
-let confirmLength;
-let confirmLowerCase;
-let confirmUpperCase;
-let confirmNumericCharacter;
-let confirmSpecialCharacter;
-let userPassArr = [];
-let randomArraySelection;
+let userPassArr = []
+let passwordLength = undefined
 
 // Function prompt user for password options 
 
@@ -112,34 +105,29 @@ if ((confirmSpecialCharacter === false) && (confirmNumericCharacter === false) &
 }}
 getPasswordOptions();
 
-// Function to choose length of password
+  // Function to choose length of password
+  
+  function getPasswordLength () {
+    let numOfChar = Number(
+      prompt("How many characters would you like in your password? Please choose a value between 10-64)")
+    );
+    if (numOfChar >= 10 && numOfChar <= 64) {
+      return numOfChar;
+    } else {
+      alert(
+        "Sorry, your password requires a minimum of 10 characters and a maximum of 64. Please try again."
+      );
+      return getPasswordLength();
+    }
+  };
 
-function getPasswordLength() {
-  let confirmLength = prompt("How many characters would you like your password to contain? Please choose between 10 and 64!");
-  if (isNaN(confirmLength) || confirmLength < 10 || confirmLength > 64) {
-    alert("Please choose between 10 and 64");
-    getPasswordLength();
-    return;
-}}
-getPasswordLength();
-
-/* While Loop is user leaves field blank 
-while (confirmLength == null) {
-  alert("You can't leave the field blank! Please put in a number");
-  getPasswordLength()
-}*/
-
-/* If user does enter a value, run a while loop until the value entered meets acceptance criteria 
-if (confirmLength !== null) {
-  while (isNaN(confirmLength) || confirmLength < 10 || confirmLength > 64) {
-    getPasswordLength();
-  }
-} */
-
-//Function to convert the password length input into a number 
+//Function to convert the password length input into a number, because otherwise it's still a string?)
 function convertToNumber() {
-  let passwordLength = Number(confirmLength);
+  let passwordLength = Number(getPasswordLength.confirmLength);
+  return;
 }
+convertToNumber()
+
 
 //Function for getting a random element from an array
 function getRandom(arr) {
@@ -149,19 +137,21 @@ function getRandom(arr) {
 //Function for storing random characters in userPassArr variable based on user choices
 function constructPassword() {
 
-  if (confirmLowerCase == true) {
+  if (getPasswordOptions.confirmLowerCase == true) {
     userPassArr += getRandom(lowerCasedCharacters);
   }
-  if (confirmUpperCase == true) {
+  if (getPasswordOptions.confirmUpperCase == true) {
     userPassArr += getRandom(upperCasedCharacters);
   }
-  if (confirmNumericCharacter == true) {
+  if (getPasswordOptions.confirmNumericCharacter == true) {
     userPassArr += getRandom(numericCharacters);
   }
-  if (confirmSpecialCharacter == true) {
+  if (getPasswordOptions.confirmSpecialCharacter == true) {
     userPassArr += getRandom(specialCharacters);
   }
 }
+constructPassword()
+
 //Function to make sure the password is the appropriate length based on user input 
 function generatePassword() {
   while (userPassArr.length < passwordLength) {
