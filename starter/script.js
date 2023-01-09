@@ -90,22 +90,7 @@ let upperCasedCharacters = [
 
 let userOptions = {};
 
-/* Function prompt user for password options 
-
-function getPasswordOptions() {
-  let confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
-  let confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");
-  let confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
-  let confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
-if ((confirmSpecialCharacter === false) && (confirmNumericCharacter === false) && (confirmLowerCase === false) && (confirmUpperCase === false)) {
-  alert("Please select at least one character option!");
-  getPasswordOptions();
-  return;
-}}
-getPasswordOptions();*/
-
 // FUNCTION TO CHOOSE LENGTH OF PW
-  
   function getPasswordLength () {
     let numOfChar = Number(
       prompt("How many characters would you like in your password? Please choose a value between 10-64)")
@@ -121,7 +106,6 @@ getPasswordOptions();*/
   };
 
 // FUNCTION TO CHOOSE CHARACTER OPTIONS 
-
   function characterOptions () {
     let char = {
       confirmLowerCase: confirm("Click OK to confirm if you would like to include lowercase characters"),
@@ -137,9 +121,15 @@ getPasswordOptions();*/
   }
   };
 
+//FUNCTION TO STORE PASSWORD OPTIONS 
+function storeUserOptions() {
+  userOptions = {
+    numOfChar: getPasswordLength(),
+    userCharacters: characterOptions(),
+  }}
 
-/*
-//Function for getting a random element from an array
+//FUNCTION FOR GETTING RANDOM ELEMENT FROM ARRAY
+
 function getRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
