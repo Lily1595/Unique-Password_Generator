@@ -88,10 +88,9 @@ let upperCasedCharacters = [
   'Z'
 ];
 
-let userPassArr = []
-let passwordLength = undefined
+let userOptions = {};
 
-// Function prompt user for password options 
+/* Function prompt user for password options 
 
 function getPasswordOptions() {
   let confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
@@ -103,9 +102,9 @@ if ((confirmSpecialCharacter === false) && (confirmNumericCharacter === false) &
   getPasswordOptions();
   return;
 }}
-getPasswordOptions();
+getPasswordOptions();*/
 
-  // Function to choose length of password
+// FUNCTION TO CHOOSE LENGTH OF PW
   
   function getPasswordLength () {
     let numOfChar = Number(
@@ -121,14 +120,25 @@ getPasswordOptions();
     }
   };
 
-//Function to convert the password length input into a number, because otherwise it's still a string?)
-function convertToNumber() {
-  let passwordLength = Number(getPasswordLength.confirmLength);
-  return;
-}
-convertToNumber()
+// FUNCTION TO CHOOSE CHARACTER OPTIONS 
+
+  function characterOptions () {
+    let char = {
+      confirmLowerCase: confirm("Click OK to confirm if you would like to include lowercase characters"),
+      confirmUpperCase: confirm("Click OK to confirm if you would like to include uppercase characters"),
+      confirmNumericCharacter: confirm("Click OK to confirm if you would like to include numeric characters"),
+      confirmSpecialCharacter: confirm("Click OK to confirm if you would like to include special characters"),
+    };
+    if ((char.lowerCasedCharacters === false) && (char.upperCasedCharacters === false) && (char.specialCharacters === false) && (char.numericCharacters === false)) {
+    return char;
+  } else {
+    alert("Please select at least one character option!");
+    return characterOptions();
+  }
+  };
 
 
+/*
 //Function for getting a random element from an array
 function getRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -172,4 +182,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+generateBtn.addEventListener('click', writePassword); */
