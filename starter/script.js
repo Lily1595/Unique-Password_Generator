@@ -91,6 +91,9 @@ let upperCasedCharacters = [
 //Variables to  store user character type choices
 let confirmSpecialCharacter, confirmNumericCharacter, confirmLowerCase, confirmUpperCase;
 
+//A variable to store the concatenated array data for password based on user choice
+let userPassArr = "";
+
 // 1. Function prompt user for password options 
 
 function getPasswordOptions() {
@@ -108,8 +111,31 @@ function getPasswordOptions() {
   while ((confirmSpecialCharacter == false) && (confirmNumericCharacter == false) && (confirmLowerCase == false) && (confirmUpperCase == false)) {
     alert("Please select at least one character option!");
   }
+  getPasswordOptions()
 
-// 2. Function to create list of possible characters from user's character options input.
+
+// 2. Function to choose length of password
+
+function getPasswordLength() {
+  let confirmLength = (prompt("How many characters would you like your password to contain? Please choose between 10 and 64!"));
+  console.log(confirmLength);
+  alert("Thank you. Your password length will be " + confirmLength + " characters");
+}
+
+// While Loop is user leaves field blank 
+while (confirmLength == null) {
+  alert("You can't leave the field blank! Please put in a number");
+  confirmLength = prompt("Please input a number between 10 and 64!");
+}
+
+//If user does enter a value, run a while loop until the value entered meets acceptance criteria 
+if (confirmLength !== null) {
+  while (isNaN(confirmLength) || confirmLength === "" || confirmLength < 10 || confirmLength > 64) {
+    confirmLength = prompt("Please input a number between 10 and 64!");
+  }
+}
+
+// 3. Function to create list of possible characters from user's character options input.
 
 function listOfCharacters() {
   let characterOptionsArray = [];
@@ -132,28 +158,6 @@ function listOfCharacters() {
   }
 }
 
-// 3. Function to choose length of password
-
-function getPasswordLength() {
-  let confirmLength = (prompt("How many characters would you like your password to contain? Please choose between 10 and 64!"));
-  console.log(confirmLength);
-  alert("Thank you. Your password length will be " + confirmLength + " characters");
-}
-
-// While Loop is user leaves field blank 
-while (confirmLength == null) {
-  alert("You can't leave the field blank! Please put in a number");
-  confirmLength = prompt("Please input a number between 10 and 64!");
-}
-
-//If user does enter a value, run a while loop until the value entered meets acceptance criteria 
-if (confirmLength !== null) {
-  while (isNaN(confirmLength) || confirmLength === "" || confirmLength < 10 || confirmLength > 64) {
-    confirmLength = prompt("Please input a number between 10 and 64!");
-  }
-}
-
- 
 
 // 4. Function to generate a random selection of characters from new array, equal to the chosen password length 
 
