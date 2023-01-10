@@ -12,7 +12,7 @@ N/A
 
 ## Usage
 
-Link to deployed application: 
+Link to deployed application: https://lily1595.github.io/Unique-Password_Generator/ 
 
 Please click the 'Generate Password' button to start the application! 
 
