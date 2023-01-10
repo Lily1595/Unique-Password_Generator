@@ -151,9 +151,6 @@ function generatePassword() {
   let userLength = userOptions.numOfChar;
   let charArray = [];
 
-  //TODO: find way to get random character order and correct legnth of password!! and get rid of commas at the bottom 
-  //divide the charArray by the the userCharacters that are equal to true 
-
   for (let i = 0; i < userLength; i++) {
     if (userOptions.userCharacters) {
       charArray.push(getRandom(longArray))
