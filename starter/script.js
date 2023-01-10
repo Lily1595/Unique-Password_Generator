@@ -140,7 +140,7 @@ function storeUserOptions() {
     userCharacters: characterOptions(),
   }
   console.log(userOptions.numOfChar);
-  console.log(userOptions.userCharacters)
+  console.log(userOptions.userCharacters);
 }
 
 //FUNCTION FOR GETTING RANDOM ELEMENT FROM ARRAY
@@ -158,26 +158,28 @@ function getRandom(arr) {
 */
 function generatePassword() {
   storeUserOptions()
-  let userChar = userOptions.userCharacters;
   let userLength = userOptions.numOfChar;
   let charArray = [];
 
+  //find way to get random character order and correct legnth of password!! and get rid of commas at the bottom 
+
   for (let i = 0; i < userLength; i++) {
-    if(userChar.confirmLowerCase){
+    while (charArray.length < i){
+    let booleanchoice = [Math.floor(Math.random() * 4)]
+    console.log(booleanchoice);
+    if((userOptions.userCharacters.confirmLowerCase) && (booleanchoice == 0)){
       charArray.push(getRandom(lowerCasedCharacters))
-    }if(userChar.confirmUppercase){
+    }if((userOptions.userCharacters.confirmUpperCase) && (booleanchoice == 1)){
       charArray.push(getRandom(upperCasedCharacters))
-    }if(userChar.confirmNumericCharacter){
+    }if((userOptions.userCharacters.confirmNumericCharacter) && (booleanchoice == 2)){
       charArray.push(getRandom(numericCharacters))
-    }if(userChar.confirmSpecialCharacter){
+    }if((userOptions.userCharacters.confirmSpecialCharacter) && (booleanchoice == 3)){
       charArray.push(getRandom(specialCharacters))
     }
   }
-  console.log(charArray);
+  return charArray;
+  }
 }
-//DEBUG - why does this return a ray of twice the number i want? 
-//DEBUG - and why does the value still come up as undefined? 
-
 // Get references to the #generate element
 let generateBtn = document.querySelector('#generate');
 
@@ -190,4 +192,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword); 
+generateBtn.addEventListener('click', writePassword);
